@@ -1,0 +1,11 @@
+# @package _global_
+
+defaults:
+  - /exp/inversion/base
+  - /opt/masked_mimic/inversion/long_jump
+
+experiment_name: long_jump
+
+wandb:
+  wandb_group: inversion_long_jump
+  wandb_tags: [ inversion, long_jump ]

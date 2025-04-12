@@ -1,0 +1,78 @@
+# @package _global_
+
+defaults:
+  - /algo: amp
+  - /terrain/terrain_obs
+  - /terrain/flat
+  - /opt/save_best_reward_model
+  - /opt/single_gpu
+
+motion_file: phys_anim/data/motions/smpl_humanoid_walk.npy
+scene_lib: null
+
+env:
+  config:
+    mimic_early_termination: null
+    mimic_reset_track:
+      reset_on_episode_reset: False
+      reset_episode_on_reset_track: False
+    enable_height_termination: True
+    current_pose_obs_type: null
+    current_pose_obs_size: 0
+
+    mimic_target_pose:
+      enabled: True
+      num_future_steps: 10
+      target_pose_type: max-coords
+      with_time: False
+    masked_mimic_obs:
+      num_obs_per_sparse_target_pose: ${eval:${.num_obs_per_target_pose}*${eval:${len:${..masked_mimic_conditionable_bodies}}+1}//${robot.num_bodies}+${eval:${len:${..masked_mimic_conditionable_bodies}}+1}*2+2}
+      masked_mimic_target_poses_num_steps: ${eval:${env.config.mimic_target_pose.num_future_steps}+1}
+
+experiment_name: amp_inversion
+
+algo:
+  config:
+    task_reward_w: 0.5
+    discriminator_reward_w: 1.0
+    eval_metric_keys: [ ]
+    eval_metrics_every: 20
+    max_epochs: ${eval:${training_max_steps}//${num_envs}//${.num_steps}}
+    models:
+      # Append the path obs to the actor and critic inputs
+      extra_input_obs_size: ${env.config.task_obs_size}
+      extra_input_model:
+        _target_: phys_anim.agents.models.common.Flatten
+        config:
+          normalize_obs: False
+          obs_clamp_value: ${algo.config.obs_clamp_value}
+        # Input and output size are the same due to flattening
+        num_in: ${algo.config.models.extra_input_obs_size}
+        num_out: ${algo.config.models.extra_input_obs_size}
+
+    # Append the direction obs to the actor and critic inputs
+    actor:
+      config:
+        mu_model:
+          config:
+            extra_inputs:
+              inversion_obs: ${algo.config.models.extra_input_model}
+
+    critic:
+      config:
+        extra_inputs:
+          inversion_obs: ${algo.config.models.extra_input_model}
+
+    extra_inputs:
+      inversion_obs:
+        retrieve_from_env: True
+        dtype: float
+        size: ${algo.config.models.extra_input_model.num_in}
+
+wandb:
+  wandb_group: amp
+  wandb_tags: [ amp ]
+
+
+
+

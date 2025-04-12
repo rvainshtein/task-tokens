@@ -1,0 +1,10 @@
+# @package _global_
+defaults:
+  - /opt/clear_strategy
+
+device: 0
+ngpu: 1
+fabric:
+  strategy:
+    _target_: lightning.fabric.strategies.SingleDeviceStrategy
+    device: ${device}

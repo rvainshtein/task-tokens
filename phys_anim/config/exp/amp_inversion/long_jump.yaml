@@ -1,0 +1,8 @@
+# @package _global_
+
+defaults:
+  - /env/masked_mimic
+  - /exp/amp_inversion/base
+  - /env/inversion/long_jump
+
+experiment_name: long_jump_amp_inversion

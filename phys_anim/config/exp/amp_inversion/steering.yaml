@@ -1,0 +1,8 @@
+# @package _global_
+
+defaults:
+  - /env/masked_mimic
+  - /exp/amp_inversion/base
+  - /env/inversion/steering
+
+experiment_name: steering_amp_inversion

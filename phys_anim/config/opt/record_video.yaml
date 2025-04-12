@@ -1,0 +1,39 @@
+# @package _global_
+
+algo:
+  config:
+    eval_callbacks:
+      export_video_cb:
+        _target_: phys_anim.agents.callbacks.export_video.ExportVideo
+        config:
+          record_dir: output/recordings/final_recordings
+          index_offset: 0
+          record_fps: 30
+          # For webm recordings
+#          fourcc: vp80
+#          suffix: webm
+          # For mp4 recordings
+          fourcc: MP4V
+          suffix: mp4
+
+          record_viewer: ${env.config.record_viewer}
+          only_record_viewer: False
+          viewer_record_dir: "output/recordings/viewer"
+
+          store_raw: False
+
+env:
+  config:
+    camera:
+      supersampling_vertical: 2
+      supersampling_horizontal: 2
+      horizontal_fov: 62.0
+      far_plane: 20000.0
+      pos: [ 1.73, -1.73, 0.77 ]  # Move closer
+      pitch_deg: 28        # Slightly look down more
+      roll_deg: 0
+      yaw_deg: 140          # Slightly adjust yaw
+      rotate_with_agent: False
+      width: 420            # Smaller resolution
+      height: 360           # Smaller resolution
+    export_video: True

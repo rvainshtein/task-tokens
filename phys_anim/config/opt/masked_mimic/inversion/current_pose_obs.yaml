@@ -1,0 +1,18 @@
+# @package _global_
+
+env:
+  config:
+    current_pose_obs_type: root_head_coords  # type of pose observation to use
+    current_pose_obs_size: 6
+
+#    current_pose_obs_type: root_head_heights
+#    current_pose_obs_size: 3
+
+#    current_pose_obs_type: null  # default
+#    current_pose_obs_size: 0
+
+
+algo:
+  config:
+    models:
+      extra_input_obs_size: ${eval:${env.config.task_obs_size}+${env.config.current_pose_obs_size}}

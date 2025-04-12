@@ -1,0 +1,36 @@
+# @package _global_
+
+defaults:
+  - mimic_vae_dagger
+
+algo:
+  _target_: phys_anim.agents.masked_mimic_finetune.MimicFinetune
+  config:
+    pre_trained_maskedmimic_path: ${pre_trained_maskedmimic_path}
+    eval_metric_keys: [ ]
+    eval_metrics_every: 20
+    max_epochs: ${eval:${training_max_steps}//${num_envs}//${.num_steps}}
+    dagger:
+      only_bc: False
+      bc_coeff: 0
+env:
+  config:
+    mimic_early_termination: null
+    task_reward_w: 1.0
+
+# No VAE random sampling for finetuning
+vae_latent_from_prior: True
+vae_noise_type: zeros
+
+pre_trained_maskedmimic_path: data/pretrained_models/MaskedMimic/last.ckpt
+
+
+# MaskedMimic has unused parameters.
+# We need to investigate why this is the case.
+# For now this flag helps avoid issues in multi-gpu/multi-node training.
+fabric:
+  strategy:
+    find_unused_parameters: true
+
+eval_overrides:
+  pre_trained_maskedmimic_path: null

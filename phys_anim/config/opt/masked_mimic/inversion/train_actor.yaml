@@ -1,0 +1,5 @@
+# @package _global_
+
+algo:
+  config:
+    dont_freeze_actor: True

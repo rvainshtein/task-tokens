@@ -1,0 +1,9 @@
+# @package _global_
+
+fabric:
+  callbacks:
+    - _target_: agents.callbacks.slurm_autoresume.SlurmAutoResume
+    - _target_: agents.callbacks.save_best_reward_model.SaveBestModelCallback
+
+auto_load_latest: True
+

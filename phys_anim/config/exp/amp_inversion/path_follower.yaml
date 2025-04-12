@@ -1,0 +1,8 @@
+# @package _global_
+
+defaults:
+  - /env/masked_mimic
+  - /exp/amp_inversion/base
+  - /env/inversion/path_follower
+
+experiment_name: path_follower_amp_inversion

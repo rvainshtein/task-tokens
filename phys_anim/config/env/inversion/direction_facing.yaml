@@ -1,0 +1,8 @@
+# @package _global_
+defaults:
+  - /env/inversion/steering
+
+env:
+  _target_: phys_anim.envs.masked_mimic_inversion.direction_facing.${backbone}.MaskedMimicDirectionFacingHumanoid
+  config:
+    task_obs_size: ${eval:${env.config.steering_params.obs_size}+2}  # 2 for direction facing

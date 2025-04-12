@@ -1,0 +1,8 @@
+# @package _global_
+
+defaults:
+  - /env/masked_mimic
+  - /exp/amp_inversion/base
+  - /env/inversion/direction_facing
+
+experiment_name: direction_facing_amp_inversion

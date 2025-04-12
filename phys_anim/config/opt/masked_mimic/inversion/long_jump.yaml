@@ -1,0 +1,5 @@
+# @package _global_
+
+defaults:
+  - /opt/masked_mimic/inversion/base
+  - /env/inversion/long_jump

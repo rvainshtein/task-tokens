@@ -1,0 +1,9 @@
+# @package _global_
+
+defaults:
+  - /opt/masked_mimic/inversion/base
+  - /env/inversion/direction_facing
+
+wandb:
+  wandb_tags: [ inversion, direction_facing ]
+  wandb_group: inversion_direction_facing

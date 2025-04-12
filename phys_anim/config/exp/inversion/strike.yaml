@@ -1,0 +1,11 @@
+# @package _global_
+
+defaults:
+  - /exp/inversion/base
+  - /opt/masked_mimic/inversion/strike
+
+experiment_name: strike
+
+wandb:
+  wandb_group: inversion_strike
+  wandb_tags: [ inversion, strike ]

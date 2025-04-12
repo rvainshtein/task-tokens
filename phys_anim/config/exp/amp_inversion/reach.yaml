@@ -1,0 +1,8 @@
+# @package _global_
+
+defaults:
+  - /env/masked_mimic
+  - /exp/amp_inversion/base
+  - /env/inversion/reach
+
+experiment_name: reach_amp_inversion

@@ -1,0 +1,5 @@
+# @package _global_
+
+fabric:
+  callbacks:
+    - _target_: agents.callbacks.save_best_reward_model.SaveBestModelCallback

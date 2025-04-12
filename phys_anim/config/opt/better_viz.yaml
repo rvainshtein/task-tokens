@@ -1,0 +1,14 @@
+# @package _global_
+
+# for better visualization
+env:
+  config:
+    camera:
+    steering_params:
+      tar_speed_min: 3.
+      stop_probability: 0.
+    reach_params:
+      change_steps_min: 60
+      change_steps_max: 90
+    strike_params:
+      tar_dist_min: 2.0

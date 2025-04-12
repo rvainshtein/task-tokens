@@ -1,0 +1,7 @@
+# @package _global_
+
+num_envs: 128
+algo:
+  config:
+    batch_size: 256
+    max_epochs: 100

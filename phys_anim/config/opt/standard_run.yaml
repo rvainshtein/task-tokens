@@ -1,0 +1,10 @@
+# @package _global_
+
+defaults:
+#  - /robot: smpl  # Due to hack with sys.argv in importing isaacgym this can't be set to default here
+#  - /backbone: isaacgym  # Due to hack with sys.argv in importing isaacgym this can't be set to default here
+  - override /terrain: flat
+
+motion_file: phys_anim/data/motions/smpl_humanoid_walk.npy
+scene_lib: null
+pre_trained_maskedmimic_path: data/pretrained_models/MaskedMimic/last.ckpt

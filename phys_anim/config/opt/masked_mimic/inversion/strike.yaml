@@ -1,0 +1,9 @@
+# @package _global_
+
+defaults:
+  - /opt/masked_mimic/inversion/base
+  - /env/inversion/strike
+
+wandb:
+  wandb_tags: [ inversion, steering ]
+  wandb_group: inversion_steering

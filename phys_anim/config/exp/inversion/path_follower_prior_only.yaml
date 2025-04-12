@@ -1,0 +1,25 @@
+# @package _global_
+
+defaults:
+  - /exp/masked_mimic
+  - /algo/masked_mimic_finetune
+  - /opt/standard_run
+  - /opt/single_gpu
+  - /env/inversion/path_follower
+
+env:
+  config:
+    enable_height_termination: True
+    mimic_reset_track:
+      reset_on_episode_reset: False
+      reset_episode_on_reset_track: False
+    use_text: False
+    use_chens_prior: True
+
+experiment_name: path_follower_prior_only
+
+# lower_compute
+num_envs: 512
+algo:
+  config:
+    batch_size: 1024

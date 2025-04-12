@@ -1,0 +1,10 @@
+# @package _global_
+
+defaults:
+  - /exp/masked_mimic
+  - /opt/clear_critic
+  - /algo/masked_mimic_finetune
+  - /opt/masked_mimic/inversion/base
+  - /opt/save_best_reward_model
+  - /opt/standard_run
+  - /opt/single_gpu

@@ -1,0 +1,6 @@
+# @package _global_
+
+algo:
+  config:
+    task_reward_w: 1
+    discriminator_reward_w: 0

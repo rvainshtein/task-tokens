@@ -1,0 +1,17 @@
+# @package _global_
+defaults:
+  - /env/inversion/base
+
+env:
+  _target_: phys_anim.envs.masked_mimic_inversion.long_jump.${backbone}.MaskedMimicLongJumpHumanoid
+  config:
+    state_init: Default
+    task_obs_size: ${env.config.long_jump_params.obs_size}
+    long_jump_params:
+      jump_start: 20
+      init_dist_from_start: 10
+      tar_dist_min: 0.5
+      tar_dist_max: 1.0
+      near_dist: 1.5
+      near_prob: 0.5
+      obs_size: 4

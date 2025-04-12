@@ -1,0 +1,7 @@
+# @package _global_
+algo:
+  config:
+    models:
+      prior_pre_processor:
+        config:
+          disable_inversion_obs: True

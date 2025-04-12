@@ -1,0 +1,22 @@
+# @package _global_
+
+env:
+  config:
+    task_obs_size: ???  # fill in each env
+    current_pose_obs_size: 0
+    use_text: False
+    use_chens_prior: False
+    text_command: a person is walking upright
+    # text_command = ["the person gets on their hand and knees and crawls around"]
+    # text_command = ["a person raises both hands and walks forward"]
+    # text_command = ["swinging arms up and down"]
+    # text_command = ["a person walks casually"]
+
+masked_mimic_report_full_body_metrics: False
+
+eval_overrides:
+  env:
+    config:
+      max_episode_length: 300
+      log_output: True
+  device: 0

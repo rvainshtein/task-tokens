@@ -1,0 +1,9 @@
+# @package _global_
+defaults:
+  - /env/inversion/path_follower
+  - /opt/masked_mimic/inversion/base
+
+
+wandb:
+  wandb_tags: [ inversion, path_follower ]
+  wandb_group: inversion_path_follower

@@ -1,0 +1,40 @@
+# @package _global_
+
+direction_obs_size: 3 # same as direction task
+
+direction_units: [ 256, 256 ]
+
+env_params:
+  direction_obs_size: ${direction_obs_size}
+  direction_units: ${direction_units}
+
+direction_for_transformer_model:
+  _target_: phys_anim.agents.models.mlp.MLP_WithNorm
+  config:
+    initializer: ${actor_initializer}
+    units: ${direction_units}
+    activation: ${actor_activation}
+    use_layer_norm: ${actor_use_layer_norm}
+    normalize_obs: ${normalize_obs}
+    obs_clamp_value: ${obs_clamp_value}
+    encoder_input_dim: ${direction_obs_size}
+    operations:
+      - type: encode
+      - type: reshape
+        new_shape:
+          - batch_size
+          - 1
+          - ${direction_for_transformer_model.num_out}
+  num_in: ${direction_obs_size}
+  num_out: ${transformer_preprocessor.config.latent_dim} # don't touch
+
+transformer_preprocessor:
+  config:
+    extra_inputs:
+      direction_obs: ${direction_for_transformer_model}
+
+algo_extra_inputs:
+  direction_obs:
+    retrieve_from_env: True
+    dtype: float
+    size: ${direction_model.num_in}

@@ -1,0 +1,6 @@
+# @package _global_
+
+num_envs: 1024
+algo:
+  config:
+    batch_size: 4096
