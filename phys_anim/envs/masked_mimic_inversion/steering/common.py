@@ -565,7 +565,7 @@ def compute_heading_reward(
     Compute the reward for the steering task.
     The reward is based on the error in the target direction and speed.
     The reward is given by:
-    reward = exp(-vel_err_scale * (tar_vel_err^2 + tangent_err_w * tangent_vel_err^2))
+    reward = exp(-(vel_err_scale * tar_vel_err^2 + tangent_err_w * tangent_vel_err^2))
     where:
     tar_vel_err = target speed - current speed in the target direction
     tangent_vel_err = current speed in the tangent direction
